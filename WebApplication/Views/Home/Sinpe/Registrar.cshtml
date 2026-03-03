@@ -1,5 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model WebApplication.Models.Sinpe
+
+<h2>Registrar Pago SINPE</h2>
+
+<form asp-action="Registrar" method="post">
+
+    <div class="mb-2">
+        <label>Telefono Origen</label>
+        <input asp-for="TelefonoOrigen" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Nombre Origen</label>
+        <input asp-for="NombreOrigen" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Telefono Destinatario</label>
+        <input asp-for="TelefonoDestinatario" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Nombre Destinatario</label>
+        <input asp-for="NombreDestinatario" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Monto</label>
+        <input asp-for="Monto" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Descripcion</label>
+        <input asp-for="Descripcion" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Registrar Pago
+    </button>
+
+</form>
