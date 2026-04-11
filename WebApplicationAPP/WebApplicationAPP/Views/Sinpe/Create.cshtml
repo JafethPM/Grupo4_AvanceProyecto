@@ -1,0 +1,32 @@
+﻿<button onclick="registrarSinpe()" class="btn btn-primary">
+    Registrar
+</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function registrarSinpe() {
+
+    var sinpe = {
+    telefonoOrigen: $("#TelefonoOrigen").val(),
+    nombreOrigen: $("#NombreOrigen").val(),
+    telefonoDestinatario: $("#TelefonoDestino").val(),
+    nombreDestinatario: $("#NombreDestino").val(),
+    monto: parseFloat($("#Monto").val()),
+    descripcion: $("#Descripcion").val()
+    };
+
+    $.ajax({
+    url: '/api/sinpeapi',
+    type: 'POST',
+    data: JSON.stringify(sinpe),
+    contentType: 'application/json',
+    success: function (res) {
+    alert(res.mensaje);
+    },
+    error: function (err) {
+    alert(err.responseJSON.mensaje);
+    }
+    });
+    }
+</script>

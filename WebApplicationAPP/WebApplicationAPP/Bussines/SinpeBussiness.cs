@@ -47,5 +47,9 @@ public SinpeBusiness(ISinpeRepository sinpeRepo,
           sinpe);
         
         }
+        public List<Sinpe> ObtenerTodos()
+        {
+            return _sinpeRepo.ObtenerTodos();
+        }
     }
 }
