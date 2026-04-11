@@ -16,5 +16,7 @@ namespace WebApplicationAPP.Data
         public DbSet<Comercio> Comercio { get; set; }
 
         public DbSet<BitacoraEvento> BitacoraEvento { get; set; }
+
+        public DbSet<ReporteMensual> ReporteMensual { get; set; }
     }
 }

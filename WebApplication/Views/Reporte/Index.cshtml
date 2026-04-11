@@ -1,0 +1,33 @@
+﻿@model List<WebApplicationAPP.Models.ReporteMensual>
+
+<h2>Reportes Mensuales</h2>
+
+<a asp-action="Generar" class="btn btn-success mb-3">
+    Generar Reportes
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Comercio</th>
+            <th>Cajas</th>
+            <th>Monto</th>
+            <th>SINPES</th>
+            <th>Comisión</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.NombreComercio</td>
+                <td>@r.CantidadDeCajas</td>
+                <td>@r.MontoTotalRecaudado</td>
+                <td>@r.CantidadDeSINPES</td>
+                <td>@r.MontoTotalComision</td>
+                <td>@r.FechaDelReporte.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
