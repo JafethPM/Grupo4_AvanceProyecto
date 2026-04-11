@@ -1,0 +1,21 @@
+﻿@model WebApplicationAPP.Models.Usuario
+
+<h2>Crear Usuario</h2>
+
+<form asp-action="Create" method="post">
+
+    <input asp-for="IdComercio" placeholder="Id Comercio" class="form-control mb-2" />
+    <input asp-for="Nombres" placeholder="Nombres" class="form-control mb-2" />
+    <input asp-for="PrimerApellido" placeholder="Primer Apellido" class="form-control mb-2" />
+    <input asp-for="SegundoApellido" placeholder="Segundo Apellido" class="form-control mb-2" />
+    <input asp-for="Identificacion" placeholder="Identificación" class="form-control mb-2" />
+    <input asp-for="CorreoElectronico" placeholder="Correo" class="form-control mb-2" />
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-2">@ViewBag.Error</div>
+}

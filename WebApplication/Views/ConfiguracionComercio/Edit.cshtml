@@ -1,0 +1,25 @@
+﻿@model WebApplicationAPP.Models.ConfiguracionComercio
+
+<h2>Editar Configuración</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="IdConfiguracion" />
+    <input type="hidden" asp-for="IdComercio" />
+
+    <select asp-for="TipoConfiguracion" class="form-control mb-2">
+        <option value="1">Plataforma</option>
+        <option value="2">Externa</option>
+        <option value="3">Ambas</option>
+    </select>
+
+    <input asp-for="Comision" class="form-control mb-2" />
+
+    <select asp-for="Estado" class="form-control mb-2">
+        <option value="true">Activo</option>
+        <option value="false">Inactivo</option>
+    </select>
+
+    <button class="btn btn-primary">Actualizar</button>
+
+</form>

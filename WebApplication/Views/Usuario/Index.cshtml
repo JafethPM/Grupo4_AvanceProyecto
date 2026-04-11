@@ -1,0 +1,37 @@
+﻿@model List<WebApplicationAPP.Models.Usuario>
+
+<h2>Usuarios</h2>
+
+<a asp-action="Create" class="btn btn-primary">Nuevo Usuario</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Identificación</th>
+            <th>Correo</th>
+            <th>Fecha Registro</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombres</td>
+                <td>@item.PrimerApellido</td>
+                <td>@item.SegundoApellido</td>
+                <td>@item.Identificacion</td>
+                <td>@item.CorreoElectronico</td>
+                <td>@item.FechaDeRegistro</td>
+                <td>@(item.Estado ? "Activo" : "Inactivo")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-warning">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+﻿@model WebApplicationAPP.Models.Usuario
+
+<h2>Editar Usuario</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="IdUsuario" />
+
+    <input asp-for="Nombres" class="form-control mb-2" />
+    <input asp-for="PrimerApellido" class="form-control mb-2" />
+    <input asp-for="SegundoApellido" class="form-control mb-2" />
+    <input asp-for="Identificacion" class="form-control mb-2" />
+    <input asp-for="CorreoElectronico" class="form-control mb-2" />
+
+    <select asp-for="Estado" class="form-control mb-2">
+        <option value="true">Activo</option>
+        <option value="false">Inactivo</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+</form>

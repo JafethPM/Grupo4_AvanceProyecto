@@ -6,7 +6,6 @@
 
     <title>@ViewData["Title"] - WebApplicationAPP</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="~/assets/css/main.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -33,33 +32,24 @@
         <!-- NAV -->
         <nav id="nav">
             <ul>
-                <li>
-                    <a asp-controller="Home" asp-action="Index">Home</a>
-                </li>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
 
-                <li>
-                    <a asp-controller="Caja" asp-action="Index">Cajas</a>
-                </li>
+                <li><a asp-controller="Caja" asp-action="Index">Cajas</a></li>
 
-                <li>
-                    <a asp-controller="Comercio" asp-action="Index">Comercios</a>
-                </li>
+                <li><a asp-controller="Comercio" asp-action="Index">Comercios</a></li>
 
-                <li>
-                    <a asp-controller="Sinpe" asp-action="Create">SINPE</a>
-                </li>
+                <!-- 🔥 CONFIGURACION COMERCIO BIEN -->
+                <li><a asp-controller="ConfiguracionComercio" asp-action="Index">Configuración Comercio</a></li>
 
-                <li>
-                    <a asp-controller="Reporte" asp-action="Index">Reportes</a>
-                </li>
+                <li><a asp-controller="Usuario" asp-action="Index">Usuarios</a></li>
 
-                <li>
-                    <a asp-controller="Bitacora" asp-action="Index">Bitácora</a>
-                </li>
+                <li><a asp-controller="Sinpe" asp-action="Create">SINPE</a></li>
 
-                <li>
-                    <a asp-controller="Login" asp-action="Logout">Cerrar Sesión</a>
-                </li>
+                <li><a asp-controller="Reporte" asp-action="Index">Reportes</a></li>
+
+                <li><a asp-controller="Bitacora" asp-action="Index">Bitácora</a></li>
+
+                <li><a asp-controller="Login" asp-action="Logout">Cerrar Sesión</a></li>
             </ul>
         </nav>
 
@@ -77,8 +67,8 @@
                 <section>
                     <h2 class="major"><span>BancoLindo</span></h2>
                     <p>
-                        Sistema de gestión bancaria para manejo de cajas, comercios y
-                        transferencias SINPE.
+                        Sistema de gestión bancaria para manejo de cajas, comercios, usuarios,
+                        configuración SINPE y reportes mensuales.
                     </p>
                 </section>
 

@@ -1,0 +1,35 @@
+﻿@model List<WebApplicationAPP.Models.ConfiguracionComercio>
+
+<h2>Configuración de Comercios</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id Comercio</th>
+            <th>Tipo</th>
+            <th>Comisión</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdComercio</td>
+                <td>
+                    @(item.TipoConfiguracion == 1 ? "Plataforma" :
+                      item.TipoConfiguracion == 2 ? "Externa" : "Ambas")
+                </td>
+                <td>@item.Comision %</td>
+                <td>@item.FechaDeRegistro</td>
+                <td>@(item.Estado ? "Activo" : "Inactivo")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-idComercio="@item.IdComercio" class="btn btn-warning">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
