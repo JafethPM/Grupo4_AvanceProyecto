@@ -22,7 +22,9 @@ namespace WebApplicationAPP.Data
 
         public DbSet<Usuario> Usuarios { get; set; }
 
-       
+        public DbSet<Servicio> Servicios { get; set; }
+        public DbSet<Cita> Citas { get; set; }
+
         public DbSet<ConfiguracionComercio> ConfiguracionComercio { get; set; }
     }
 }

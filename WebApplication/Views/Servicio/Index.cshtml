@@ -1,0 +1,28 @@
+﻿@model List<WebApplicationAPP.Models.Servicio>
+
+<h2>Services</h2>
+
+<a asp-action="Create" class="btn btn-success">New Service</a>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Specialist</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nombre</td>
+            <td>@item.Especialista</td>
+            <td>@item.Monto</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">
+                    Edit
+                </a>
+            </td>
+        </tr>
+    }
+</table>

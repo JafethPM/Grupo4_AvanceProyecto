@@ -6,6 +6,7 @@
 
     <title>@ViewData["Title"] - WebApplicationAPP</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="~/assets/css/main.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -24,7 +25,7 @@
                             BancoLindo
                         </a>
                     </h1>
-                    <p>Sistema bancario</p>
+                    <p>Sistema bancario / médico</p>
                 </div>
             </div>
         </header>
@@ -32,23 +33,23 @@
         <!-- NAV -->
         <nav id="nav">
             <ul>
+                <!-- GENERALES -->
                 <li><a asp-controller="Home" asp-action="Index">Home</a></li>
 
+                <!-- SISTEMA ORIGINAL -->
                 <li><a asp-controller="Caja" asp-action="Index">Cajas</a></li>
-
                 <li><a asp-controller="Comercio" asp-action="Index">Comercios</a></li>
-
-                <!-- 🔥 CONFIGURACION COMERCIO BIEN -->
                 <li><a asp-controller="ConfiguracionComercio" asp-action="Index">Configuración Comercio</a></li>
-
                 <li><a asp-controller="Usuario" asp-action="Index">Usuarios</a></li>
-
                 <li><a asp-controller="Sinpe" asp-action="Create">SINPE</a></li>
-
                 <li><a asp-controller="Reporte" asp-action="Index">Reportes</a></li>
-
                 <li><a asp-controller="Bitacora" asp-action="Index">Bitácora</a></li>
 
+                <!-- 🔥 NUEVO CASO MÉDICO -->
+                <li><a asp-controller="Servicio" asp-action="Index">Servicios</a></li>
+                <li><a asp-controller="Cita" asp-action="Index">Citas</a></li>
+
+                <!-- SESION -->
                 <li><a asp-controller="Login" asp-action="Logout">Cerrar Sesión</a></li>
             </ul>
         </nav>
@@ -67,8 +68,9 @@
                 <section>
                     <h2 class="major"><span>BancoLindo</span></h2>
                     <p>
-                        Sistema de gestión bancaria para manejo de cajas, comercios, usuarios,
-                        configuración SINPE y reportes mensuales.
+                        Sistema de gestión integral:
+                        Cajas, Comercios, Usuarios, Configuración SINPE,
+                        Reportes, Servicios médicos y gestión de Citas.
                     </p>
                 </section>
 

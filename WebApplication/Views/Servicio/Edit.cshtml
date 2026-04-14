@@ -1,0 +1,20 @@
+﻿@model WebApplicationAPP.Models.Servicio
+
+<h2>Edit Service</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <input asp-for="Nombre" class="form-control" />
+    <input asp-for="Descripcion" class="form-control" />
+    <input asp-for="Monto" class="form-control" />
+    <input asp-for="IVA" class="form-control" />
+    <input asp-for="Especialidad" class="form-control" />
+    <input asp-for="Especialista" class="form-control" />
+    <input asp-for="Clinica" class="form-control" />
+
+    <label>Active</label>
+    <input asp-for="Estado" type="checkbox" />
+
+    <button class="btn btn-warning mt-2">Update</button>
+</form>

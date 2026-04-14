@@ -1,0 +1,40 @@
+﻿@model WebApplicationAPP.Models.Cita
+
+<h2>Reserve Appointment</h2>
+
+<form asp-action="Reserve" method="post">
+
+    <input type="hidden" asp-for="IdServicio" value="@ViewBag.Servicio.Id" />
+
+    <div class="mb-2">
+        <input asp-for="NombreDeLaPersona" placeholder="Full Name" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <input asp-for="Identificacion" placeholder="ID Number" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <input asp-for="Telefono" placeholder="Phone" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <input asp-for="Correo" placeholder="Email" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <input asp-for="Direccion" placeholder="Address" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Birth Date</label>
+        <input asp-for="FechaNacimiento" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Appointment Date</label>
+        <input asp-for="FechaDeLaCita" type="datetime-local" class="form-control" />
+    </div>
+
+    <button class="btn btn-success mt-2">Reserve</button>
+</form>

@@ -49,6 +49,14 @@ builder.Services.AddScoped<UsuarioBusiness>();
 builder.Services.AddScoped<IConfiguracionComercioRepository, ConfiguracionComercioRepository>();
 builder.Services.AddScoped<ConfiguracionComercioBusiness>();
 
+builder.Services.AddScoped<ICitaRepository, CitaRepository>();
+builder.Services.AddScoped<CitaBusiness>();
+
+
+builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
+builder.Services.AddScoped<ServicioBusiness>();
+
+
 
 var app = builder.Build();
 

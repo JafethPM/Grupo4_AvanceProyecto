@@ -1,0 +1,23 @@
+﻿@model WebApplicationAPP.Models.Cita
+
+<h2>Appointment Details</h2>
+
+<div class="card p-3">
+
+    <p><b>Name:</b> @Model.NombreDeLaPersona</p>
+    <p><b>Email:</b> @Model.Correo</p>
+    <p><b>Phone:</b> @Model.Telefono</p>
+    <p><b>ID:</b> @Model.Identificacion</p>
+
+    <hr />
+
+    <p><b>Service:</b> @Model.Servicio.Nombre</p>
+    <p><b>Specialist:</b> @Model.Servicio.Especialista</p>
+    <p><b>Total Amount:</b> ₡@Model.MontoTotal</p>
+
+    <hr />
+
+    <p><b>Appointment Date:</b> @Model.FechaDeLaCita</p>
+    <p><b>Reservation Date:</b> @Model.FechaDeRegistro</p>
+
+</div>
