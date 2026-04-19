@@ -38,6 +38,6 @@ namespace WebApplicationAPP.Models
         [StringLength(50)]
         public string? Descripcion { get; set; }
 
-        public bool Estado { get; set; } = false; // 0 = No sincronizado
+        public bool Estado { get; set; } = false; 
     }
 }

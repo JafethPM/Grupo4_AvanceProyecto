@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationAPP.Repositories;
 
 namespace WebApplicationAPP.Controllers
 {
+    [Authorize]
     public class BitacoraController : Controller
     {
         private readonly IBitacoraRepository _repo;

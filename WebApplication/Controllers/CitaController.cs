@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationAPP.Business;
 using WebApplicationAPP.Data;
 using WebApplicationAPP.Models;
 
 namespace WebApplicationAPP.Controllers
 {
+    [Authorize]
     public class CitaController : Controller
     {
         private readonly CitaBusiness _business;
@@ -16,7 +18,7 @@ namespace WebApplicationAPP.Controllers
             _context = context;
         }
 
-        // LISTA SERVICIOS
+
         public IActionResult Index()
         {
             var servicios = _context.Servicios
@@ -26,7 +28,6 @@ namespace WebApplicationAPP.Controllers
             return View(servicios);
         }
 
-        // FORM RESERVA
         public IActionResult Reservar(int id)
         {
             var servicio = _context.Servicios.Find(id);
@@ -55,7 +56,7 @@ namespace WebApplicationAPP.Controllers
             return RedirectToAction("Detalle", new { id = cita.Id });
         }
 
-        // DETALLE
+
         public IActionResult Detalle(int id)
         {
             var cita = _business.Obtener(id);
@@ -66,7 +67,7 @@ namespace WebApplicationAPP.Controllers
             return View(cita);
         }
 
-        // AJAX
+
         public IActionResult Buscar(int id)
         {
             var cita = _business.Obtener(id);

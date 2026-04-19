@@ -1,15 +1,18 @@
 ﻿using WebApplicationAPP.Models;
 using WebApplicationAPP.Repositories;
+using WebApplicationAPP.Services;
 
 namespace WebApplicationAPP.Business
 {
     public class UsuarioBusiness
     {
         private readonly IUsuarioRepository _repo;
+        private readonly IBitacoraService _bitacora;
 
-        public UsuarioBusiness(IUsuarioRepository repo)
+        public UsuarioBusiness(IUsuarioRepository repo, IBitacoraService bitacora  )
         {
             _repo = repo;
+            _bitacora = bitacora;
         }
 
         public List<Usuario> Listar() => _repo.Listar();
@@ -25,7 +28,16 @@ namespace WebApplicationAPP.Business
             u.Estado = true;
 
             _repo.Insertar(u);
+            _bitacora.RegistrarEvento
+                        (
+                            "Usuario_G4",
+                            "INSERT",
+                            "Se registró un nuevo usuario",
+                            null,
+                            u
+                        );
             return "OK";
+
         }
 
         public string Actualizar(Usuario u)
@@ -44,6 +56,14 @@ namespace WebApplicationAPP.Business
             existente.FechaDeModificacion = DateTime.Now;
 
             _repo.Actualizar(existente);
+                _bitacora.RegistrarEvento
+                        (
+                            "Usuario_G4",
+                            "UPDATE",
+                            "Se editó un usuario",
+                            null,
+                            existente
+                        );
             return "OK";
         }
     }

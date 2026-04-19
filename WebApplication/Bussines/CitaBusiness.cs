@@ -1,15 +1,19 @@
-﻿using WebApplicationAPP.Models;
+﻿using WebApplicationAPP.Data;
+using WebApplicationAPP.Models;
 using WebApplicationAPP.Repositories;
+using WebApplicationAPP.Services;
 
 namespace WebApplicationAPP.Business
 {
     public class CitaBusiness
     {
         private readonly ICitaRepository _repo;
+        private readonly IBitacoraService _bitacora;
 
-        public CitaBusiness(ICitaRepository repo)
+        public CitaBusiness(ICitaRepository repo, IBitacoraService bitacora)
         {
             _repo = repo;
+            _bitacora = bitacora;
         }
 
         public List<Cita> Listar()
@@ -28,6 +32,14 @@ namespace WebApplicationAPP.Business
             cita.FechaDeRegistro = DateTime.Now;
 
             _repo.Insertar(cita);
+            _bitacora.RegistrarEvento
+                    (
+                        "Citas_G4",
+                        "INSERT",
+                        "Se reservó una nueva cita",
+                        null,
+                        cita
+                    );
         }
     }
 }

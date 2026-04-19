@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using WebApplicationAPP.Business;
 using WebApplicationAPP.Bussines;
 using WebApplicationAPP.Models;
-using WebApplicationAPP.Business;
 
 namespace WebApplication.Controllers
 {
+    [Authorize]
     public class SinpeController : Controller
     {
         private readonly SinpeBusiness _bussines;

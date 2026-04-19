@@ -1,15 +1,20 @@
 ﻿using WebApplicationAPP.Models;
 using WebApplicationAPP.Repositories;
+using WebApplicationAPP.Services;   
+
 
 namespace WebApplicationAPP.Bussines
 {
     public class ComercioBussines
     {
         private readonly IComercioRepository _repo;
+        private readonly IBitacoraService _bitacora;
 
-        public ComercioBussines(IComercioRepository repo)
+        public ComercioBussines(IComercioRepository repo, IBitacoraService bitacora)
         {
             _repo = repo;
+            _bitacora = bitacora;
+
         }
 
         public List<Comercio> Listar()
@@ -33,6 +38,14 @@ namespace WebApplicationAPP.Bussines
             comercio.Estado = true;
 
             _repo.Agregar(comercio);
+            _bitacora.RegistrarEvento
+                    (
+                        "Comercio_G4",
+                        "INSERT",
+                        "Se registró un nuevo comercio",
+                        null,
+                        comercio
+                    );
         }
 
 
@@ -53,6 +66,14 @@ namespace WebApplicationAPP.Bussines
             comercioBD.FechaDeModificacion = DateTime.Now;
 
             _repo.Actualizar(comercioBD);
+            _bitacora.RegistrarEvento
+                        (
+                            "Comercio_G4",
+                            "UPDATE",
+                            "Se editó un comercio",
+                            null,
+                            comercioBD
+                        );
         }
 
 

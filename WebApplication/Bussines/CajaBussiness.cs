@@ -1,15 +1,19 @@
 ﻿using WebApplicationAPP.Models;
 using WebApplicationAPP.Repositories;
+using WebApplicationAPP.Services;
+using System.Text.Json;
 
 namespace WebApplicationAPP.Bussines
 {
     public class CajaBussiness
     {
         private readonly ICajaRepository _cajaRepository;
+        private readonly IBitacoraService _bitacora;
 
-        public CajaBussiness(ICajaRepository cajaRepository)
+        public CajaBussiness(ICajaRepository cajaRepository, IBitacoraService bitacora)
         {
             _cajaRepository = cajaRepository;
+            _bitacora = bitacora;
         }
 
         public List<Cajas> GetAllCajas()
@@ -41,6 +45,15 @@ namespace WebApplicationAPP.Bussines
             caja.FechaDeModificacion = DateTime.Now;
 
             _cajaRepository.AddCaja(caja);
+            _bitacora.RegistrarEvento
+                (
+                   "Cajas_G4",
+                   "INSERT",
+                   "Se creó una nueva caja",
+                   null,
+                   caja
+                );
+
         }
 
 
@@ -74,10 +87,35 @@ namespace WebApplicationAPP.Bussines
             existente.FechaDeModificacion = DateTime.Now;
 
             _cajaRepository.UpdateCaja();
+
+            _bitacora.RegistrarEvento
+                (
+                    "Cajas_G4",
+                    "UPDATE",
+                    "Se actualizo la informacion",
+                    null,
+                    caja
+                );
         }
 
-        public void DeleteCaja(int id) {
+
+        public void DeleteCaja(int id)
+        {
+            var caja = _cajaRepository.GetCajaById(id);
+
+            if (caja == null)
+                throw new Exception("La caja no existe.");
+
             _cajaRepository.DeleteCaja(id);
-        }   
+
+            // BITÁCORA DELETE
+            _bitacora.RegistrarEvento(
+                "Cajas_G4",
+                "DELETE",
+                "Se eliminó una caja",
+                JsonSerializer.Serialize(caja),
+                null
+            );
+        }
     }
 }

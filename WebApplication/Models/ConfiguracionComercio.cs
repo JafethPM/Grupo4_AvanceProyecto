@@ -12,7 +12,6 @@ namespace WebApplicationAPP.Models
         [Required]
         public int IdComercio { get; set; }
 
-        // 🔥 FIX IMPORTANTE: evita que EF invente columnas
         [ForeignKey(nameof(IdComercio))]
         public Comercio? Comercio { get; set; }
 

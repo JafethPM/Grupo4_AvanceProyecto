@@ -23,20 +23,20 @@ public SinpeBusiness(ISinpeRepository sinpeRepo,
 
         public void Create(Sinpe sinpe)
         {
-            // Validar que la caja exista
+
             var caja = _cajasRepo.GetAllCajas()
                 .FirstOrDefault(c => c.TelefonoSINPE == sinpe.TelefonoDestinatario);
 
             if (caja == null)
                 throw new Exception("El teléfono destinatario no está registrado.");
 
-            // Validar que esté activa
+
             if (!caja.Estado)
                 throw new Exception("No se puede pagar a una caja inactiva.");
 
-            // Datos automáticos
+
             sinpe.FechaDeRegistro = DateTime.Now;
-            sinpe.Estado = false; // No sincronizado
+            sinpe.Estado = false; 
 
             _sinpeRepo.Create(sinpe);
             _bitacora.RegistrarEvento(

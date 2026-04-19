@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationAPP.Bussines;
 using WebApplicationAPP.Models;
 
 namespace WebApplicationAPP.Controllers
 {
+    [Authorize]
     public class ComercioController : Controller
     {
         private readonly ComercioBussines _comercioBussines;

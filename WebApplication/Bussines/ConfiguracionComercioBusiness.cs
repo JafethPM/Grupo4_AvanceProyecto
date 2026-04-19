@@ -1,15 +1,18 @@
 ﻿using WebApplicationAPP.Models;
 using WebApplicationAPP.Repositories;
+using WebApplicationAPP.Services;
 
 namespace WebApplicationAPP.Business
 {
     public class ConfiguracionComercioBusiness
     {
         private readonly IConfiguracionComercioRepository _repo;
+        private readonly IBitacoraService _bitacora;
 
-        public ConfiguracionComercioBusiness(IConfiguracionComercioRepository repo)
+        public ConfiguracionComercioBusiness(IConfiguracionComercioRepository repo, IBitacoraService bitacora)
         {
             _repo = repo;
+            _bitacora = bitacora;
         }
 
         public List<ConfiguracionComercio> Listar()
@@ -31,7 +34,16 @@ namespace WebApplicationAPP.Business
             c.Estado = true;
 
             _repo.Insertar(c);
+            _bitacora.RegistrarEvento
+                    (
+                        "ConfiguracionComercio_G4",
+                        "INSERT",
+                        "Se registró una nueva configuración de comercio",
+                        null,
+                        c
+                    );
             return "OK";
+
         }
 
         public string Actualizar(ConfiguracionComercio c)
@@ -47,7 +59,15 @@ namespace WebApplicationAPP.Business
             existente.FechaDeModificacion = DateTime.Now;
 
             _repo.Actualizar(existente);
-            return "OK";
+            _bitacora.RegistrarEvento
+                    (
+                        "ConfiguracionComercio_G4",
+                        "UPDATE",
+                        "Se actualizó una configuración de comercio",
+                        null,
+                        existente
+                    );
+            return "OK";    
         }
     }
 }

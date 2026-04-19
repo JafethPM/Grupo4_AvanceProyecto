@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplicationAPP.Bussines;
 using WebApplicationAPP.Data;
@@ -6,6 +7,7 @@ using WebApplicationAPP.Models;
 
 namespace WebApplicationAPP.Controllers
 {
+    [Authorize]
     public class CajaController : Controller
     {
         private readonly CajaBussiness _cajaBussiness;

@@ -24,5 +24,6 @@ namespace WebApplicationAPP.Repositories
                 .OrderByDescending(x => x.IdEvento)
                 .ToList();
         }
+
     }
 }

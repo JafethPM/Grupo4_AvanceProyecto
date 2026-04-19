@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApplicationAPP.Bussines;
 
 namespace WebApplicationAPP.Controllers
 {
+    [Authorize]
     public class ReporteController : Controller
     {
         private readonly ReporteBusiness _business;

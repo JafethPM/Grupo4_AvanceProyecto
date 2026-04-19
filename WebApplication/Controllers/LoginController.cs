@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+//Vestigios del login
 namespace WebApplicationAPP.Controllers
 {
     public class LoginController : Controller

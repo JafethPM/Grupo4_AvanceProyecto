@@ -1,15 +1,20 @@
 ﻿using WebApplicationAPP.Models;
 using WebApplicationAPP.Repositories;
+using WebApplicationAPP.Services;
 
 namespace WebApplicationAPP.Bussines
 {
-    public class ReporteBusiness
-    {
-        private readonly IReporteRepository _repo;
+    public class ReporteBusiness 
 
-        public ReporteBusiness(IReporteRepository repo)
+    {
+
+        private readonly IReporteRepository _repo;
+        private readonly IBitacoraService _bitacora;
+
+        public ReporteBusiness(IReporteRepository repo, IBitacoraService bitacora)
         {
             _repo = repo;
+            _bitacora = bitacora;   
         }
 
         public List<ReporteMensual> GetAll()
@@ -20,6 +25,14 @@ namespace WebApplicationAPP.Bussines
         public void Generar()
         {
             _repo.GenerarReportes();
+                _bitacora.RegistrarEvento
+                        (
+                            "Reporte_G4",
+                            "GENERATE",
+                            "Se generaron los reportes mensuales",
+                            null,
+                            null
+                        );
         }
     }
 }

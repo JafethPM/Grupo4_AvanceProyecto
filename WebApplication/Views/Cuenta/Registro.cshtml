@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Registro";
+}
+
+<form asp-action="Registro" method="post">
+
+    <h2 style="text-align:center;">Registro</h2>
+
+    <input type="email"
+           name="email"
+           class="form-control mb-2"
+           placeholder="Correo"
+           required />
+
+    <input type="password"
+           name="password"
+           class="form-control mb-2"
+           placeholder="Contraseña"
+           required />
+
+    <select name="rol" class="form-control mb-3" required>
+        <option value="Administrador">Administrador</option>
+        <option value="Cajero">Cajero</option>
+    </select>
+
+    <button type="submit" class="btn btn-success w-100">
+        Registrar
+    </button>
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:red; text-align:center; margin-top:10px;">
+            @ViewBag.Error
+        </p>
+    }
+
+</form>

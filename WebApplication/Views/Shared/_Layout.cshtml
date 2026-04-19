@@ -6,17 +6,17 @@
 
     <title>@ViewData["Title"] - WebApplicationAPP</title>
 
-    <!-- CSS -->
+
     <link rel="stylesheet" href="~/assets/css/main.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
+@using Microsoft.AspNetCore.Identity
 
 <body class="is-preload">
 
     <div id="page-wrapper">
 
-        <!-- HEADER -->
         <header id="header">
             <div class="logo container">
                 <div>
@@ -25,43 +25,56 @@
                             BancoLindo
                         </a>
                     </h1>
-                    <p>Sistema bancario / médico</p>
+                    <p>Sistema bancario</p>
                 </div>
             </div>
         </header>
 
-        <!-- NAV -->
+
         <nav id="nav">
             <ul>
-                <!-- GENERALES -->
+
                 <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if(User.IsInRole("Administrador")){
+                    <li><a asp-controller="Caja" asp-action="Index">Cajas</a></li>
+                    <li><a asp-controller="Comercio" asp-action="Index">Comercios</a></li>
+                    <li><a asp-controller="ConfiguracionComercio" asp-action="Index">Configuración Comercio</a></li>
+                    <li><a asp-controller="Usuario" asp-action="Index">Usuarios</a></li>
+                    <li><a asp-controller="Sinpe" asp-action="Create">SINPE</a></li>
+                    <li><a asp-controller="Reporte" asp-action="Index">Reportes</a></li>
+                    <li><a asp-controller="Bitacora" asp-action="Index">Bitácora</a></li>
+                    <li><a asp-controller="Servicio" asp-action="Index">Servicios</a></li>
+                    <li><a asp-controller="Cita" asp-action="Index">Citas</a></li>
+                    }
+                     else if (User.IsInRole("Cajero"))
+                     {
+                      <li><a asp-controller="Caja" asp-action="Index">Cajas</a></li>
+                     }
+                }
 
-                <!-- SISTEMA ORIGINAL -->
-                <li><a asp-controller="Caja" asp-action="Index">Cajas</a></li>
-                <li><a asp-controller="Comercio" asp-action="Index">Comercios</a></li>
-                <li><a asp-controller="ConfiguracionComercio" asp-action="Index">Configuración Comercio</a></li>
-                <li><a asp-controller="Usuario" asp-action="Index">Usuarios</a></li>
-                <li><a asp-controller="Sinpe" asp-action="Create">SINPE</a></li>
-                <li><a asp-controller="Reporte" asp-action="Index">Reportes</a></li>
-                <li><a asp-controller="Bitacora" asp-action="Index">Bitácora</a></li>
 
-                <!-- 🔥 NUEVO CASO MÉDICO -->
-                <li><a asp-controller="Servicio" asp-action="Index">Servicios</a></li>
-                <li><a asp-controller="Cita" asp-action="Index">Citas</a></li>
-
-                <!-- SESION -->
-                <li><a asp-controller="Login" asp-action="Logout">Cerrar Sesión</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-controller="Cuenta" asp-action="Logout">Cerrar Sesión</a></li>
+                }
+                else
+                {
+                    <li><a asp-controller="Cuenta" asp-action="Login">Login</a></li>
+                    <li><a asp-controller="Cuenta" asp-action="Registro">Registrarse</a></li>
+                }
             </ul>
         </nav>
 
-        <!-- CONTENIDO -->
+
         <section id="main">
             <div class="container">
                 @RenderBody()
             </div>
         </section>
 
-        <!-- FOOTER -->
+
         <footer id="footer">
             <div class="container">
 
@@ -70,7 +83,7 @@
                     <p>
                         Sistema de gestión integral:
                         Cajas, Comercios, Usuarios, Configuración SINPE,
-                        Reportes, Servicios médicos y gestión de Citas.
+                        Reportes y gestión de Citas.
                     </p>
                 </section>
 
@@ -85,7 +98,6 @@
 
     </div>
 
-    <!-- JS -->
     <script src="~/assets/js/jquery.min.js"></script>
     <script src="~/assets/js/jquery.dropotron.min.js"></script>
     <script src="~/assets/js/jquery.scrolly.min.js"></script>

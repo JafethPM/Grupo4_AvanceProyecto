@@ -2,32 +2,77 @@
 
 <h2>Bitácora de Eventos</h2>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Tabla</th>
-            <th>Tipo</th>
-            <th>Fecha</th>
-            <th>Descripción</th>
-            <th>StackTrace</th>
-            <th>Datos Anteriores</th>
-            <th>Datos Posteriores</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<h2 class="mb-4">📋 Bitácora de Eventos</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered align-middle">
+        <thead class="table-dark">
             <tr>
-                <td>@item.IdEvento</td>
-                <td>@item.TablaDeEvento</td>
-                <td>@item.TipoDeEvento</td>
-                <td>@item.FechaDeEvento</td>
-                <td>@item.DescripcionDeEvento</td>
-                <td>@item.StackTrace</td>
-                <td>@item.DatosAnteriores</td>
-                <td>@item.DatosPosteriores</td>
+                <th>#</th>
+                <th>Tabla</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Detalles</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.IdEvento</td>
+
+                    <td>
+                        <span class="fw-bold">@item.TablaDeEvento</span>
+                    </td>
+
+                    <td>
+                        @if (item.TipoDeEvento == "INSERT")
+                        {
+                            <span class="badge bg-success">INSERT</span>
+                        }
+                        else if (item.TipoDeEvento == "UPDATE")
+                        {
+                            <span class="badge bg-warning text-dark">UPDATE</span>
+                        }
+                        else if (item.TipoDeEvento == "DELETE")
+                        {
+                            <span class="badge bg-danger">DELETE</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@item.TipoDeEvento</span>
+                        }
+                    </td>
+
+                    <td>
+                        @item.FechaDeEvento.ToString("dd/MM/yyyy HH:mm")
+                    </td>
+
+                    <td>
+                        @item.DescripcionDeEvento
+                    </td>
+
+                    <td>
+                        <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#detalle-@item.IdEvento">
+                            Ver más
+                        </button>
+
+                        <div class="collapse mt-2" id="detalle-@item.IdEvento">
+                            <div class="card card-body">
+                                <strong>StackTrace:</strong>
+                                <pre class="small">@item.StackTrace</pre>
+
+                                <strong>Antes:</strong>
+                                <pre class="small">@item.DatosAnteriores</pre>
+
+                                <strong>Después:</strong>
+                                <pre class="small">@item.DatosPosteriores</pre>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

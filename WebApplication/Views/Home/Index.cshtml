@@ -22,8 +22,11 @@
             <p>
                 Utiliza el menú superior para navegar entre los diferentes módulos del sistema.
             </p>
-
+            @if (User.Identity.IsAuthenticated)
+            {
             <ul class="actions">
+
+                
                 <li>
                     <a asp-controller="Caja" asp-action="Index" class="button primary">
                         Ver Cajas
@@ -31,12 +34,16 @@
                 </li>
 
                 <li>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrador"))
+                    {
                     <a asp-controller="Comercio" asp-action="Index" class="button alt">
                         Ver Comercios
                     </a>
+                    }
+                    
                 </li>
             </ul>
-
+            }
         </section>
 
     </div>
